@@ -8,8 +8,8 @@ import { atoms, Flex, Box } from '@zoralabs/zord';
 export function Feed() {
   const { loading, error, data } = useQuery(newDrops);
 
-  if (loading) return <div>'Loading...'</div>;
-  if (error) return <div>`Error! ${error.message}`</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error! ${error.message}</div>;
 
   console.log(data);
 
