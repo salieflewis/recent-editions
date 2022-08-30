@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Feed } from '../components/Feed';
-// import Header from '../components/Header';
+import { Header } from '../components/Header';
 
 import Head from 'next/head';
 import Image from 'next/image';
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
         </style>
       </Head>
-      {/* <Header /> */}
+      <Header />
       <Feed />
     </div>
   );

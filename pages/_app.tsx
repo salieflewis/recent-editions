@@ -1,8 +1,11 @@
-// import '@fontsource/inter/400.css';
-// import '@fontsource/inter/600.css';
-
+import 'styles/globals.css'
+import 'styles/styles.css';
 import '@zoralabs/zord/index.css';
-import { ThemeProvider, lightTheme } from '@zoralabs/zord';
+import {
+  ThemeProvider,
+  lightTheme,
+  darkTheme,
+} from '@zoralabs/zord';
 import type { AppProps } from 'next/app';
 
 import {
@@ -22,7 +25,7 @@ export default function MyApp({
 }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={darkTheme}>
         <Component {...pageProps} />
       </ThemeProvider>
     </ApolloProvider>
