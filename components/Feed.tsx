@@ -11,8 +11,6 @@ export function Feed() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error! ${error.message}</div>;
 
-  console.log(data);
-
   return (
     <Flex wrap='wrap' gap='x12'>
       {data.erc721Drops.map(
