@@ -5,6 +5,7 @@ import {
   Modal,
   ModalContent,
   Paragraph,
+  Heading,
   Flex,
 } from '@zoralabs/zord';
 
@@ -62,12 +63,12 @@ export const Collect = ({
       <ModalContent title='Collect modal'>
         <Box>
           <Flex wrap='wrap'>
-            <Eyebrow w='100%'>
+            <Eyebrow w='100%' mt='x6'>
               Purchase an edition of ${symbol}
             </Eyebrow>
-            <Paragraph mt='x2' size='xl'>
+            <Heading mt='x2' size='xs'>
               {pricePerMintinETH} ETH
-            </Paragraph>
+            </Heading>
           </Flex>
           <Button
             onClick={() => write?.()}
