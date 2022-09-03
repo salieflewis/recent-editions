@@ -1,11 +1,16 @@
-import { Flex, Eyebrow } from '@zoralabs/zord';
+import { Box, Flex, Eyebrow, atoms } from '@zoralabs/zord';
 
-import { headingWrapper, linkWrapper } from 'styles/styles.css';
+import { ConnectKitButton } from 'connectkit';
+
+import {
+  headingWrapper,
+  linkWrapper,
+} from 'styles/styles.css';
 
 export function Header() {
   return (
     <Flex className={headingWrapper}>
-      <Eyebrow>
+      <Eyebrow mx='x8'>
         Recent Editions from{' '}
         <a
           href='http://create.zora.co/'
@@ -15,7 +20,10 @@ export function Header() {
         >
           create.zora.co
         </a>
-        </Eyebrow>
+      </Eyebrow>
+      <Box mx='x8'>
+        <ConnectKitButton />
+      </Box>
     </Flex>
   );
 }

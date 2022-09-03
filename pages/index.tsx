@@ -1,9 +1,7 @@
 import type { NextPage } from 'next';
 import { Feed } from '../components/Feed';
 import { Header } from '../components/Header';
-
 import Head from 'next/head';
-import Image from 'next/image';
 
 const Home: NextPage = () => {
   return (
@@ -18,7 +16,7 @@ const Home: NextPage = () => {
           rel='icon'
           type='image/png'
           sizes='32x32'
-          href='/favicon-32x32.png'
+          href='/assets/favicon-32x32.png'
         />
       </Head>
       <Header />

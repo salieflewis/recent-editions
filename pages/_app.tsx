@@ -1,4 +1,4 @@
-import 'styles/globals.css'
+import 'styles/globals.css';
 import 'styles/styles.css';
 import '@zoralabs/zord/index.css';
 import {
@@ -14,20 +14,40 @@ import {
   ApolloProvider,
 } from '@apollo/client';
 
+import { WagmiConfig, createClient } from 'wagmi';
+import {
+  ConnectKitProvider,
+  ConnectKitButton,
+  getDefaultClient,
+} from 'connectkit';
+
 const apolloClient = new ApolloClient({
   uri: 'https://api.thegraph.com/subgraphs/name/iainnash/zora-editions-mainnet',
   cache: new InMemoryCache(),
 });
+
+const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
+
+const client = createClient(
+  getDefaultClient({
+    appName: 'recent editions',
+    alchemyId,
+  })
+);
 
 export default function MyApp({
   Component,
   pageProps,
 }: AppProps) {
   return (
-    <ApolloProvider client={apolloClient}>
-      <ThemeProvider theme={darkTheme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </ApolloProvider>
+    <WagmiConfig client={client}>
+      <ApolloProvider client={apolloClient}>
+        <ConnectKitProvider>
+          <ThemeProvider theme={lightTheme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </ConnectKitProvider>
+      </ApolloProvider>
+    </WagmiConfig>
   );
 }

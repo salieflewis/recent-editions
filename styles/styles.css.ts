@@ -11,36 +11,60 @@ import {
 globalStyle('html, body', {
   margin: 0,
   padding: 0,
-  background: 'black',
   // fontFamily: 'Inter',
 });
 
-export const cardWrapper = style([
+export const imageWrapper = style([
   {
-    objectFit: 'contain',
+    objectFit: 'cover',
   },
-  {
-    ':hover': {
-      transform: 'scale(1.05)',
-      transition: '0.4s ease',
-    },
-  },
+  // {
+  //   ':hover': {
+  //     transform: 'scale(1.05)',
+  //     transition: '0.4s ease',
+  //   },
+  // },
   atoms({
     size: ['x64', 'x64'],
+    borderRadius: 'curved',
   }),
+]);
+
+export const cardWrapper = style([
+  {
+    border: '2px solid #F0F0F0',
+  },
+  // {
+  //   ':hover': {
+  //     backgroundColor: '#363636',
+  //     transition: '0.5s ease',
+  //     border: '2px solid #363636',
+  //   }
+  // },
+  atoms({
+    borderRadius: 'curved',
+  }),
+]);
+
+export const collectButton = style([
+  {
+    ':hover': {
+      color: '#363636',
+    },
+  },
 ]);
 
 export const headingWrapper = style([
   {
-    backgroundColor: 'black',
-    zIndex: '10',
+    backgroundColor: 'white',
+    zIndex: '2',
   },
   atoms({
-    pl: 'x6',
-    py: 'x8',
     w: '100vw',
-    mb: 'x16',
+    h: 'x24',
     pos: 'fixed',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   }),
 ]);
 
@@ -49,11 +73,11 @@ export const linkWrapper = style([
     textDecoration: 'underline',
   },
   {
-    ':hover' : {
+    ':hover': {
       color: '#673ab7',
-    }
-  }
-])
+    },
+  },
+]);
 
 // export const hideMobile = style([
 //   {
