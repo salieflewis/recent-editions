@@ -25,7 +25,8 @@ export function Feed() {
             editionMetadata,
             salesConfig,
           }) => {
-            if (editionMetadata != null)
+            // if (editionMetadata != null)
+            if (editionMetadata.imageURI != '')
               return (
                 <Box
                   key={`${editionMetadata.imageURI}-${name}`}
