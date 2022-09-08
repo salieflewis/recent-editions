@@ -42,6 +42,7 @@ export const cardWrapper = style([
 
 export const connectButtonStyle = style([
   {
+    backgroundColor: 'white',
     border: '2px solid #F0F0F0',
     boxShadow: '2px 2px #F0F0F0',
     textAlign: 'center'
@@ -52,6 +53,7 @@ export const connectButtonStyle = style([
       transition: '0.4s ease',
       transform: 'scale(1.02)',
       boxShadow: '0px 0px #F0F0F0',
+      cursor: 'pointer',
     },
   },
   atoms({
@@ -66,15 +68,19 @@ export const collectButton = style([
     borderRadius: '8px 8px',
     border: '2px solid #F0F0F0',
     boxShadow: '2px 2px #F0F0F0',
+    textAlign: 'center',
   },
   {
     ':hover': {
+      backgroundColor: '#F0F0F0',
       transition: '0.4s ease',
       transform: 'scale(1.02)',
       boxShadow: '0px 0px #F0F0F0',
+      cursor: 'pointer',
     },
   },
   atoms({
+    p: 'x4',
     width: '100%',
   }),
 ]);

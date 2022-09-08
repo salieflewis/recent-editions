@@ -7,7 +7,7 @@ export const CustomConnect = ({title}) => {
         <ConnectKitButton.Custom>
            {({ isConnected, isConnecting, show, hide, address, truncatedAddress, ensName }) => {
              return (
-               <Box as={Button} variant='ghost' onClick={show} className={connectButtonStyle}>
+               <Box onClick={show} className={connectButtonStyle}>
                  {isConnected ? <Eyebrow>{ensName}</Eyebrow> ?? <Eyebrow>{truncatedAddress}</Eyebrow> : <Eyebrow>{title}</Eyebrow>}
                </Box>
              );
