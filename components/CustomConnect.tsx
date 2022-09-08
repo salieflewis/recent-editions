@@ -8,7 +8,7 @@ export const CustomConnect = ({title}) => {
            {({ isConnected, isConnecting, show, hide, address, ensName }) => {
              return (
                <Box as={Button} variant='ghost' onClick={show} className={connectButtonStyle}>
-                 {isConnected ? address : <Eyebrow>{title}</Eyebrow>}
+                 {isConnected ? <Eyebrow>{address}</Eyebrow> : <Eyebrow>{title}</Eyebrow>}
                </Box>
              );
            }}
