@@ -3,17 +3,18 @@ import {
   Button,
   Flex,
   Eyebrow,
-  Paragraph,
+  Label,
+  Tag,
 } from '@zoralabs/zord';
 import { IpfsImage } from 'react-ipfs-image';
 
 import {
   cardWrapper,
   imageWrapper,
+  cardTitle,
 } from 'styles/styles.css';
 
-import { Collect } from './Collect'
-
+import { Collect } from './Collect';
 
 export const NFTCard = ({
   editionMetadata,
@@ -24,24 +25,26 @@ export const NFTCard = ({
 }) => {
   return (
     <Box className={cardWrapper}>
-      <Box p='x2'>
+      <Box>
         <IpfsImage
           className={imageWrapper}
           hash={editionMetadata.imageURI}
           gatewayUrl='https://zora-dev.mypinata.cloud/ipfs'
         />
+        {/* <Box mx='x3' mb='x3' maxW='x64'> */}
         <Box maxW='x64'>
-          <Flex justify='space-between'>
-            <Eyebrow>${symbol}</Eyebrow>
-            <Collect
-              address={address}
-              publicSalePrice={publicSalePrice}
-              symbol={symbol}
-            />
+          <Flex my='x2' justify='space-between' align='center'>
+            <Label size='sm' className={cardTitle}>
+              {name}
+            </Label>
+            <Tag active={true}>${symbol}</Tag>
           </Flex>
-          <Paragraph mt='x2' size='lg'>
-            {name}
-          </Paragraph>
+
+          <Collect
+            address={address}
+            publicSalePrice={publicSalePrice}
+            symbol={symbol}
+          />
         </Box>
       </Box>
     </Box>

@@ -7,6 +7,7 @@ import {
   Paragraph,
   Heading,
   Flex,
+  Tag,
 } from '@zoralabs/zord';
 
 import { collectButton } from 'styles/styles.css';
@@ -53,11 +54,9 @@ export const Collect = ({
   return (
     <Modal
       trigger={
-        <Button variant='unset'>
-          <Eyebrow className={collectButton}>
-            Collect
-          </Eyebrow>
-        </Button>
+        <Box as={Button} mt='x4' variant='outline' className={collectButton}>
+          <Eyebrow>Collect</Eyebrow>
+        </Box>
       }
     >
       <ModalContent title='Collect modal'>
