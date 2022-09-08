@@ -61,20 +61,6 @@ export const Collect = ({
 
   const { isDisconnected } = useAccount();
 
-  function handleWrite() {
-    if (isDisconnected)
-      return (
-        <>
-          {console.log('This is working')}
-          <Modal open={true}>
-            <ModalContent>
-              <Paragraph>Hello</Paragraph>
-            </ModalContent>
-          </Modal>
-        </>
-      );
-  }
-
   return (
     <Modal
       trigger={
@@ -127,7 +113,7 @@ export const Collect = ({
               </Button>
             </Flex>
             <Button
-              onClick={() => handleWrite()}
+              onClick={() => write?.()}
               w='100%'
               variant='secondary'
               mt='x8'
