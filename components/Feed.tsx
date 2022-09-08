@@ -15,7 +15,7 @@ export function Feed() {
 
   return (
     <>
-      <Flex wrap='wrap' gap='x8' mx='x8'>
+      <Flex wrap='wrap' gap='x16' mx='x16'>
         {data.erc721Drops.map(
           ({
             name,
@@ -25,8 +25,8 @@ export function Feed() {
             editionMetadata,
             salesConfig,
           }) => {
-            // if (editionMetadata != null)
-            if (editionMetadata.imageURI != '')
+            if (editionMetadata != null)
+            // if (editionMetadata.imageURI != '')
               return (
                 <Box
                   key={`${editionMetadata.imageURI}-${name}`}

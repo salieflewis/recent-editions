@@ -1,10 +1,14 @@
 import { Box, Flex, Eyebrow, atoms } from '@zoralabs/zord';
 
 import { ConnectKitButton } from 'connectkit';
+import { CustomConnect } from './CustomConnect';
+
+import { Button } from '@zoralabs/zord'
 
 import {
   headingWrapper,
   linkWrapper,
+  connectButtonStyle,
 } from 'styles/styles.css';
 
 export function Header() {
@@ -22,7 +26,7 @@ export function Header() {
         </a>
       </Eyebrow>
       <Box mx='x8'>
-        <ConnectKitButton />
+      <CustomConnect title={'Connect Wallet'} />
       </Box>
     </Flex>
   );
