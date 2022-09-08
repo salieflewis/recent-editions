@@ -5,10 +5,10 @@ import { connectButtonStyle } from "styles/styles.css";
 export const CustomConnect = ({title}) => {
     return (
         <ConnectKitButton.Custom>
-           {({ isConnected, isConnecting, show, hide, address, ensName }) => {
+           {({ isConnected, isConnecting, show, hide, address, truncatedAddress, ensName }) => {
              return (
                <Box as={Button} variant='ghost' onClick={show} className={connectButtonStyle}>
-                 {isConnected ? <Eyebrow>{address}</Eyebrow> : <Eyebrow>{title}</Eyebrow>}
+                 {isConnected ? <Eyebrow>{truncatedAddress}</Eyebrow> : <Eyebrow>{title}</Eyebrow>}
                </Box>
              );
            }}
