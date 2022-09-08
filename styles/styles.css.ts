@@ -106,11 +106,12 @@ export const headingWrapper = style([
 
 export const linkWrapper = style([
   {
-    textDecoration: 'underline',
+    textDecoration: 'none',
   },
   {
     ':hover': {
-      color: '#673ab7',
+      color: 'black',
+      textDecoration: 'underline'
     },
   },
 ]);
