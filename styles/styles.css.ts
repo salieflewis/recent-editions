@@ -17,7 +17,7 @@ export const imageWrapper = style([
   {
     objectFit: 'cover',
     borderRadius: '8px 8px 0 0',
-    // borderBottom: '2px solid #F0F0F0',
+    borderBottom: '2px solid #F0F0F0',
   },
   // {
   //   ':hover': {
@@ -33,7 +33,7 @@ export const imageWrapper = style([
 
 export const cardWrapper = style([
   {
-    // border: '2px solid #F0F0F0',
+    border: '2px solid #F0F0F0',
   },
   atoms({
     borderRadius: 'curved',
@@ -42,12 +42,20 @@ export const cardWrapper = style([
 
 export const collectButton = style([
   {
-    borderRadius: '0 0 8px 8px',
-    border: '2px solid #F0F0F0'
+    borderRadius: '8px 8px',
+    border: '2px solid #F0F0F0',
+    boxShadow: '2px 2px #F0F0F0',
+    // borderTop: '2px solid #F0F0F0',
+    // borderLeft: '0',
+    // borderRight: '0',
+    // borderBottom: '0',
+
   },
   {
     ':hover': {
-      color: '#363636',
+        transition: '0.4s ease',
+        transform: 'scale(1.02)',
+        boxShadow: '0px 0px #F0F0F0',
     },
   },
   atoms({

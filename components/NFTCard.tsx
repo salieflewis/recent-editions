@@ -32,8 +32,8 @@ export const NFTCard = ({
           gatewayUrl='https://zora-dev.mypinata.cloud/ipfs'
         />
         {/* <Box mx='x3' mb='x3' maxW='x64'> */}
-        <Box maxW='x64'>
-          <Flex my='x2' justify='space-between' align='center'>
+        <Box mx='x3' my='x2' maxW='x64'>
+          <Flex justify='space-between' align='center'>
             <Label size='sm' className={cardTitle}>
               {name}
             </Label>

@@ -54,7 +54,12 @@ export const Collect = ({
   return (
     <Modal
       trigger={
-        <Box as={Button} mt='x4' variant='outline' className={collectButton}>
+        <Box
+          as={Button}
+          my='x4'
+          variant='outline'
+          className={collectButton}
+        >
           <Eyebrow>Collect</Eyebrow>
         </Box>
       }
