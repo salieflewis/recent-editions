@@ -10,9 +10,14 @@ import {
   Tag,
 } from '@zoralabs/zord';
 
-import { collectButton } from 'styles/styles.css';
+import { CustomConnect } from './CustomConnect';
 
-import { useContractWrite } from 'wagmi';
+import {
+  collectButton,
+  connectButtonStyle,
+} from 'styles/styles.css';
+
+import { useContractWrite, useAccount } from 'wagmi';
 
 import { ethers, BigNumber } from 'ethers';
 
@@ -51,38 +56,62 @@ export const Collect = ({
     },
   });
 
+  const { isDisconnected } = useAccount();
+
+  function handleWrite() {
+    if (isDisconnected)
+      return (
+        <>
+          {console.log('This is working')}
+          <Modal open={true}>
+            <ModalContent>
+              <Paragraph>Hello</Paragraph>
+            </ModalContent>
+          </Modal>
+        </>
+      );
+  }
+
   return (
     <Modal
       trigger={
         <Box
           as={Button}
           my='x4'
-          variant='outline'
           className={collectButton}
+          variant='ghost'
         >
           <Eyebrow>Collect</Eyebrow>
         </Box>
       }
     >
       <ModalContent title='Collect modal'>
-        <Box>
-          <Flex wrap='wrap'>
-            <Eyebrow w='100%' mt='x6'>
-              Purchase an edition of ${symbol}
-            </Eyebrow>
-            <Heading mt='x2' size='xs'>
-              {pricePerMintinETH} ETH
-            </Heading>
+        {isDisconnected ? (
+          <Flex mt='x8' mb='x4' justify='center' mx='auto'>
+            <CustomConnect
+              title={'Go ahead and connect your wallet'}
+            />
           </Flex>
-          <Button
-            onClick={() => write?.()}
-            w='100%'
-            variant='secondary'
-            mt='x8'
-          >
-            <Eyebrow>Collect Edition</Eyebrow>
-          </Button>
-        </Box>
+        ) : (
+          <Box>
+            <Flex wrap='wrap'>
+              <Eyebrow w='100%' mt='x6'>
+                Purchase an edition of ${symbol}
+              </Eyebrow>
+              <Heading mt='x2' size='xs'>
+                {pricePerMintinETH} ETH
+              </Heading>
+            </Flex>
+            <Button
+              onClick={() => handleWrite()}
+              w='100%'
+              variant='secondary'
+              mt='x8'
+            >
+              <Eyebrow>Collect Edition</Eyebrow>
+            </Button>
+          </Box>
+        )}
       </ModalContent>
     </Modal>
   );

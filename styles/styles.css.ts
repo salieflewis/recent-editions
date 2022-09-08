@@ -40,22 +40,38 @@ export const cardWrapper = style([
   }),
 ]);
 
+export const connectButtonStyle = style([
+  {
+    border: '2px solid #F0F0F0',
+    boxShadow: '2px 2px #F0F0F0',
+    textAlign: 'center'
+  },
+  {
+    ':hover': {
+      backgroundColor: '#F0F0F0',
+      transition: '0.4s ease',
+      transform: 'scale(1.02)',
+      boxShadow: '0px 0px #F0F0F0',
+    },
+  },
+  atoms({
+    borderRadius: 'curved',
+    p: 'x4',
+    w: 'auto',
+  }),
+]);
+
 export const collectButton = style([
   {
     borderRadius: '8px 8px',
     border: '2px solid #F0F0F0',
     boxShadow: '2px 2px #F0F0F0',
-    // borderTop: '2px solid #F0F0F0',
-    // borderLeft: '0',
-    // borderRight: '0',
-    // borderBottom: '0',
-
   },
   {
     ':hover': {
-        transition: '0.4s ease',
-        transform: 'scale(1.02)',
-        boxShadow: '0px 0px #F0F0F0',
+      transition: '0.4s ease',
+      transform: 'scale(1.02)',
+      boxShadow: '0px 0px #F0F0F0',
     },
   },
   atoms({
