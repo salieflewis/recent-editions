@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Script from 'next/script';
 import { Feed } from '../components/Feed';
 import { Header } from '../components/Header';
 import Head from 'next/head';
@@ -19,11 +20,11 @@ const Home: NextPage = () => {
           href='/assets/favicon-32x32.png'
         />
         {/* <!-- Google tag (gtag.js) --> */}
-        <script
+        <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
-        ></script>
-        <script
+        ></Script>
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
