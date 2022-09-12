@@ -14,12 +14,24 @@ import {
   ApolloProvider,
 } from '@apollo/client';
 
+import { offsetLimitPagination } from '@apollo/client/utilities';
+
 import { WagmiConfig, createClient } from 'wagmi';
 import {
   ConnectKitProvider,
   ConnectKitButton,
   getDefaultClient,
 } from 'connectkit';
+
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        erc721Drops: offsetLimitPagination(),
+      },
+    },
+  },
+});
 
 const apolloClient = new ApolloClient({
   uri: 'https://api.thegraph.com/subgraphs/name/iainnash/zora-editions-mainnet',

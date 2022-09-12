@@ -1,11 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const newDrops = gql`
-  query {
+  query ($first: Int, $skip: Int) {
     erc721Drops(
       orderBy: createdAt
       orderDirection: desc
-      first: 96
+      first: $first
+      skip: $skip
     ) {
       name
       address
