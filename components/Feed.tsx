@@ -2,22 +2,16 @@ import { newDrops } from '../gql/queries.js';
 import { useQuery } from '@apollo/client';
 import { Flex, Box } from '@zoralabs/zord';
 import { NFTCard } from '../components/NFTCard';
-import {
-  useInView,
-  InView,
-} from 'react-intersection-observer';
+import { InView } from 'react-intersection-observer';
 import { atoms } from '@zoralabs/zord';
 
 export function Feed() {
-  // const { ref, inView, entry } = useInView({
-  //   threshold: 0,
-  // });
   const length = 0;
   const { loading, error, data, fetchMore } = useQuery(
     newDrops,
     {
       variables: {
-        first: 16,
+        first: 32,
         skip: 0,
       },
     }
@@ -65,23 +59,19 @@ export function Feed() {
           )}
 
         <InView
-          onChange={async (inView) => {
+          onChange={(inView) => {
             if (inView) {
-              await fetchMore({
+              fetchMore({
                 variables: {
-                  first: 4,
-                  skip: 0,
+                  skip: 32,
                 },
               });
-              console.log('Hello');
+              console.log(inView);
             }
           }}
         />
       </Flex>
 
-      {/* <div>
-        <p>{`In  View: ${inView}.`}</p>
-      </div> */}
       <div className={atoms({ mt: 'x16' })} />
     </>
   );

@@ -28,6 +28,15 @@ const cache = new InMemoryCache({
     Query: {
       fields: {
         erc721Drops: offsetLimitPagination(),
+        // erc721Drops: offsetLimitPagination([
+        //   'first',
+        //   'skip',
+        // ]),
+        // erc721Drops: {
+        //   keyArgs: false,
+        //   merge(existing = [], incoming) {
+        //     return [...existing, ...incoming];
+        //   },
       },
     },
   },
