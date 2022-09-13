@@ -9,12 +9,15 @@ import {
 
 import { CustomConnect } from './CustomConnect';
 
+import Link from 'next/link';
+
 import { Button } from '@zoralabs/zord';
 
 import {
   headingWrapper,
   linkWrapper,
   connectButtonStyle,
+  activeLinkWrapper,
 } from 'styles/styles.css';
 
 export function Header() {
@@ -31,7 +34,18 @@ export function Header() {
           create.zora.co
         </a>
       </Eyebrow>
-      <Flex gap='x6' mx='x8' align='center'>
+
+      <Flex gap='x12' mx='x8' align='center'>
+        <Link href='/feed/latest'>
+          <Eyebrow>
+            <a className={activeLinkWrapper}>Latest</a>
+          </Eyebrow>
+        </Link>
+        <Link href='/feed/free'>
+          <Eyebrow>
+            <a className={activeLinkWrapper}>Free</a>
+          </Eyebrow>
+        </Link>
         <CustomConnect title={'Connect Wallet'} />
       </Flex>
     </Flex>

@@ -13,6 +13,22 @@ globalStyle('html, body', {
   padding: 0,
 });
 
+export const activeLinkWrapper = style([
+  {
+    selectors: {
+      // '&:active': {
+      //   color: 'black',
+      // },
+      '&:hover': {
+        color: 'black',
+      },
+      '&:focus': {
+        color: 'black',
+      },
+    },
+  },
+]);
+
 export const imageWrapper = style([
   {
     objectFit: 'cover',
@@ -45,7 +61,7 @@ export const connectButtonStyle = style([
     backgroundColor: 'white',
     border: '2px solid #F0F0F0',
     boxShadow: '2px 2px #F0F0F0',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   {
     ':hover': {
@@ -117,7 +133,7 @@ export const linkWrapper = style([
   {
     ':hover': {
       color: 'black',
-      textDecoration: 'underline'
+      textDecoration: 'underline',
     },
   },
 ]);
