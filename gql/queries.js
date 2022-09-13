@@ -5,7 +5,7 @@ export const NEW_DROPS = gql`
     erc721Drops(
       orderBy: createdAt
       orderDirection: desc
-      first: 96
+      first: 24
     ) {
       name
       address

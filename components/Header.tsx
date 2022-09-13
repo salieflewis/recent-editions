@@ -7,9 +7,7 @@ import {
   Paragraph,
 } from '@zoralabs/zord';
 
-import { ConnectKitButton } from 'connectkit';
 import { CustomConnect } from './CustomConnect';
-import { FreeMint } from './FreeMint';
 
 import { Button } from '@zoralabs/zord';
 
@@ -34,7 +32,6 @@ export function Header() {
         </a>
       </Eyebrow>
       <Flex gap='x6' mx='x8' align='center'>
-        <FreeMint />
         <CustomConnect title={'Connect Wallet'} />
       </Flex>
     </Flex>
