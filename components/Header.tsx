@@ -1,9 +1,17 @@
-import { Box, Flex, Eyebrow, atoms } from '@zoralabs/zord';
+import {
+  Box,
+  Flex,
+  Eyebrow,
+  PopUp,
+  Label,
+  Paragraph,
+} from '@zoralabs/zord';
 
 import { ConnectKitButton } from 'connectkit';
 import { CustomConnect } from './CustomConnect';
+import { FreeMint } from './FreeMint';
 
-import { Button } from '@zoralabs/zord'
+import { Button } from '@zoralabs/zord';
 
 import {
   headingWrapper,
@@ -25,9 +33,10 @@ export function Header() {
           create.zora.co
         </a>
       </Eyebrow>
-      <Box mx='x8'>
-      <CustomConnect title={'Connect Wallet'} />
-      </Box>
+      <Flex gap='x6' mx='x8' align='center'>
+        <FreeMint />
+        <CustomConnect title={'Connect Wallet'} />
+      </Flex>
     </Flex>
   );
 }

@@ -1,21 +1,19 @@
-import { newDrops } from '../gql/queries.js';
+// import { NEW_DROPS } from '../gql/queries.js';
 import { useQuery } from '@apollo/client';
 
 import { Flex, Box } from '@zoralabs/zord';
 
 import { NFTCard } from '../components/NFTCard';
 
-import { useState } from 'react';
-
-export function Feed() {
-  const { loading, error, data } = useQuery(newDrops);
+export const Feed = ({ query }) => {
+  const { loading, error, data } = useQuery(query);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error! ${error.message}</div>;
 
   return (
     <>
-      <Flex wrap='wrap' gap='x16' mx='x16'>
+      <Flex wrap='wrap' mx='x16'>
         {data.erc721Drops.map(
           ({
             name,
@@ -26,10 +24,9 @@ export function Feed() {
             salesConfig,
           }) => {
             if (editionMetadata != null)
-            // if (editionMetadata.imageURI != '')
               return (
                 <Box
-                  key={`${editionMetadata.imageURI}-${name}`}
+                  key={`${address}`}
                   mx='auto'
                   mt='x24'
                 >
@@ -38,7 +35,9 @@ export function Feed() {
                     symbol={symbol}
                     name={name}
                     address={address}
-                    publicSalePrice={salesConfig.publicSalePrice}
+                    publicSalePrice={
+                      salesConfig.publicSalePrice
+                    }
                   />
                 </Box>
               );
@@ -47,4 +46,4 @@ export function Feed() {
       </Flex>
     </>
   );
-}
+};

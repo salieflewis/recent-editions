@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Script from 'next/script';
-import { Feed } from '../components/Feed';
 import { Header } from '../components/Header';
 import Head from 'next/head';
 
@@ -39,7 +38,6 @@ const Home: NextPage = () => {
         />
       </Head>
       <Header />
-      <Feed />
     </div>
   );
 };
