@@ -1,11 +1,6 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import {
   atoms,
-  media,
-  typography,
-  colorTheme,
-  radii,
-  fontWeight,
 } from '@zoralabs/zord';
 
 globalStyle('html, body', {
@@ -112,11 +107,34 @@ export const headingWrapper = style([
   atoms({
     w: '100vw',
     h: 'x24',
-    pos: 'fixed',
+    // pos: 'fixed',
     alignItems: 'center',
     justifyContent: 'space-between',
   }),
 ]);
+
+export const filterWrapper = style({
+  position: 'relative',
+  display: 'flex',
+  paddingLeft: 24,
+  zIndex: 2
+})
+
+export const filters = style([
+  {
+    // zIndex: '2',
+  }
+  , atoms({
+    w: '100vw',
+    // pos: 'fixed',
+    alignItems: 'center',
+    gap: 'x3',
+    whiteSpace: 'nowrap',
+    flexDirection: 'row-reverse',
+    pl: 'x4',
+    pr: 'x3',
+  }),
+])
 
 export const linkWrapper = style([
   {
