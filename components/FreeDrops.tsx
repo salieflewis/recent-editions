@@ -3,7 +3,7 @@ import { InView } from 'react-intersection-observer';
 
 // Components
 import { NFTCard } from '../components/NFTCard';
-import { Flex, Box, SpinnerOG } from '@zoralabs/zord';
+import { Flex, Box, SpinnerOG, Grid } from '@zoralabs/zord';
 
 // Query
 import useSWR from 'swr'
@@ -13,11 +13,12 @@ import { GET_FREE_DROPS } from '../gql/queries'
 const dropsFetcher = (query, first, skip) => request('https://api.thegraph.com/subgraphs/name/iainnash/zora-editions-mainnet', query, { first, skip })
 
 // Utils
-import { getOrderBy } from 'utils/subgraph';
+// import { getOrderBy } from 'utils/subgraph';
 
 // Hooks
 import { useState, useEffect, useMemo } from 'react'
 import usePagination from 'hooks/usePagination'
+import { feedWrapper } from 'styles/styles.css';
 
 const FreeDrops = ({ filter, sorting }) => {
   const [drops, setDrops] = useState([])
@@ -69,41 +70,42 @@ const FreeDrops = ({ filter, sorting }) => {
           fullWidthSpinner
         ) :
           (
-            <Flex
-              wrap='wrap'
-              mx='x16'
-            >
-              {
-                drops?.map(({ name, address, owner, symbol, editionMetadata, salesConfig }) => {
-                  if (editionMetadata != null)
-                    return (
-                      <Box
-                        key={`${editionMetadata.imageURI}-${name}`}
-                        mx='auto'
-                        mt='x24'
-                      >
-                        <NFTCard
-                          editionMetadata={editionMetadata}
-                          symbol={symbol}
-                          name={name}
-                          address={address}
-                          publicSalePrice={
-                            salesConfig.publicSalePrice
-                          }
-                        />
-                      </Box>
-                    );
-                })
-              }
-              <InView
-                onChange={(inView) => {
-                  if (inView) {
-                    handleLoadMore()
-                  }
-                }}
-              />
-            </Flex>
-
+            <Box className={feedWrapper}>
+              <Grid
+                wrap='wrap'
+                px='x16'
+                gap='x6'
+                columns="repeat(auto-fill, minmax(240px, 1fr))"
+              >
+                {
+                  drops?.map(({ name, address, owner, symbol, editionMetadata, salesConfig }) => {
+                    if (editionMetadata != null)
+                      return (
+                        <Box
+                          key={`${editionMetadata.imageURI}-${name}`}
+                        >
+                          <NFTCard
+                            editionMetadata={editionMetadata}
+                            symbol={symbol}
+                            name={name}
+                            address={address}
+                            publicSalePrice={
+                              salesConfig.publicSalePrice
+                            }
+                          />
+                        </Box>
+                      );
+                  })
+                }
+                <InView
+                  onChange={(inView) => {
+                    if (inView) {
+                      handleLoadMore()
+                    }
+                  }}
+                />
+              </Grid>
+            </Box>
           )
       }
     </>
