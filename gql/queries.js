@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from 'graphql-request';
 
 export const GET_NEW_DROPS = gql`
   query ERC721Drops($first: Int, $skip: Int) {
