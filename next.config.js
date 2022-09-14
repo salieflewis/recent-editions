@@ -5,7 +5,10 @@ const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
+  reactStrictMode: true,
+  images: {
+    domains: ['zora-dev.mypinata.cloud']
+  }
 };
 
 module.exports = withVanillaExtract(nextConfig);
