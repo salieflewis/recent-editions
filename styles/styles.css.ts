@@ -13,9 +13,17 @@ globalStyle('html, body', {
   padding: 0,
 });
 
+export const image = style({
+  objectFit: 'cover',
+  height: '100%',
+  width: '100%'
+})
+
 export const imageWrapper = style([
   {
-    objectFit: 'cover',
+    // objectFit: 'cover',
+    aspectRatio: '1/1',
+    position: 'relative',
     borderRadius: '8px 8px 0 0',
     borderBottom: '2px solid #F0F0F0',
   },
