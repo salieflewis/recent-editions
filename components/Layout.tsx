@@ -1,4 +1,3 @@
-import { Box } from '@zoralabs/zord'
 import Head from 'next/head';
 import React from 'react'
 import { Header } from './Header';
@@ -18,24 +17,6 @@ const layout = ({ children }) => {
           sizes='32x32'
           href='/assets/favicon-32x32.png'
         />
-        {/* <!-- Google tag (gtag.js) --> */}
-        {/* <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
-        ></Script> */}
-        {/* <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-            `,
-          }}
-        /> */}
       </Head>
       <Header />
       <main>
