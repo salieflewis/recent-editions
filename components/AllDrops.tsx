@@ -56,7 +56,7 @@ export function AllDrops({ filter, sorting }) {
   }, [filter, sorting])
 
   const fullWidthSpinner = (
-    <Box width='100%' mt='x5' justifySelf='center'>
+    <Box width='100%' mt='x5' style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
       <SpinnerOG />
     </Box>
   )
