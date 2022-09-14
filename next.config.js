@@ -7,7 +7,7 @@ const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['zora-dev.mypinata.cloud']
+    domains: ['zora-dev.mypinata.cloud', 'arweave.net']
   }
 };
 
