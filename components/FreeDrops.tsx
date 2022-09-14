@@ -21,7 +21,6 @@ import usePagination from 'hooks/usePagination'
 
 const FreeDrops = ({ filter, sorting }) => {
   const [drops, setDrops] = useState([])
-  const orderBy = useMemo(() => getOrderBy('editions', sorting), [sorting])
   // const { ref, inView } = useInView()
 
   // GQL Pagination
@@ -59,7 +58,7 @@ const FreeDrops = ({ filter, sorting }) => {
   }, [filter, sorting])
 
   const fullWidthSpinner = (
-    <Box width='100%' mt='x5' justifySelf='center'>
+    <Box width='100%' mt='x5' style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
       <SpinnerOG />
     </Box>
   )
