@@ -1,17 +1,18 @@
-import { Box, Flex, Eyebrow, atoms } from '@zoralabs/zord';
-
-import { ConnectKitButton } from 'connectkit';
+import { Flex, Eyebrow } from '@zoralabs/zord';
 import { CustomConnect } from './CustomConnect';
-
-import { Button } from '@zoralabs/zord'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import {
   headingWrapper,
   linkWrapper,
   connectButtonStyle,
+  activeLinkWrapper,
 } from 'styles/styles.css';
 
 export function Header() {
+  const router = useRouter();
+
   return (
     <Flex className={headingWrapper}>
       <Eyebrow mx='x8'>
@@ -25,9 +26,20 @@ export function Header() {
           create.zora.co
         </a>
       </Eyebrow>
-      <Box mx='x8'>
-      <CustomConnect title={'Connect Wallet'} />
-      </Box>
+
+      <Flex gap='x12' mx='x8' align='center'>
+        <Link href='/feed/latest'>
+          <Eyebrow>
+            <a className={router.asPath == '/feed/latest' ? activeLinkWrapper : linkWrapper}>Latest</a>
+          </Eyebrow>
+        </Link>
+        <Link href='/feed/free'>
+          <Eyebrow>
+            <a className={router.asPath == '/feed/free' ? activeLinkWrapper : linkWrapper}>Free</a>
+          </Eyebrow>
+        </Link>
+        <CustomConnect title={'Connect Wallet'} />
+      </Flex>
     </Flex>
   );
 }
