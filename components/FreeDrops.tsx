@@ -8,17 +8,20 @@ import { Flex, Box, SpinnerOG } from '@zoralabs/zord';
 // Query
 import useSWR from 'swr'
 import request from 'graphql-request';
-import { GET_NEW_DROPS } from '../gql/queries'
-
+import { GET_FREE_DROPS } from '../gql/queries'
 // Fetcher
 const dropsFetcher = (query, first, skip) => request('https://api.thegraph.com/subgraphs/name/iainnash/zora-editions-mainnet', query, { first, skip })
 
+// Utils
+import { getOrderBy } from 'utils/subgraph';
+
 // Hooks
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import usePagination from 'hooks/usePagination'
 
-export function Feed({ filter, sorting }) {
+const FreeDrops = ({ filter, sorting }) => {
   const [drops, setDrops] = useState([])
+  const orderBy = useMemo(() => getOrderBy('editions', sorting), [sorting])
   // const { ref, inView } = useInView()
 
   // GQL Pagination
@@ -27,7 +30,7 @@ export function Feed({ filter, sorting }) {
   // Get drops data
   const first = limit // store limit as `first` for the subgraph
   const { data: dropsData, error: fetchDropsError } = useSWR(
-    [GET_NEW_DROPS, first, skip],
+    [GET_FREE_DROPS, first, skip],
     dropsFetcher
   )
 
@@ -108,4 +111,4 @@ export function Feed({ filter, sorting }) {
   );
 }
 
-
+export default FreeDrops
