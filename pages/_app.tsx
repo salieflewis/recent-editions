@@ -17,7 +17,6 @@ import {
 import { WagmiConfig, createClient } from 'wagmi';
 import {
   ConnectKitProvider,
-  ConnectKitButton,
   getDefaultClient,
 } from 'connectkit';
 

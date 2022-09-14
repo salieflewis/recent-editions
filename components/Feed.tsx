@@ -1,8 +1,5 @@
-// import { NEW_DROPS } from '../gql/queries.js';
 import { useQuery } from '@apollo/client';
-
 import { Flex, Box } from '@zoralabs/zord';
-
 import { NFTCard } from '../components/NFTCard';
 
 export const Feed = ({ query }) => {

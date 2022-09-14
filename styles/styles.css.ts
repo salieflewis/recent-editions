@@ -15,18 +15,13 @@ globalStyle('html, body', {
 
 export const activeLinkWrapper = style([
   {
-    selectors: {
-      // '&:active': {
-      //   color: 'black',
-      // },
-      '&:hover': {
-        color: 'black',
-      },
-      '&:focus': {
-        color: 'black',
-      },
-    },
+    color: 'black',
   },
+  // {
+  //   selectors: {
+  //     '&:hover': {},
+  //   },
+  // },
 ]);
 
 export const imageWrapper = style([
@@ -133,7 +128,7 @@ export const linkWrapper = style([
   {
     ':hover': {
       color: 'black',
-      textDecoration: 'underline',
+      // textDecoration: 'underline',
     },
   },
 ]);
