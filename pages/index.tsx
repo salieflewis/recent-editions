@@ -19,12 +19,13 @@ const Home: NextPage = () => {
           href='/assets/favicon-32x32.png'
         />
       </Head>
-      {/* <!-- Google tag (gtag.js) --> */}
       <Script
-        async
+        strategy='afterInteractive'
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
       ></Script>
       <Script
+        id='google-analytics'
+        strategy='afterInteractive'
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
