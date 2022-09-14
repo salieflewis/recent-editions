@@ -17,7 +17,7 @@ const usePagination = (initLimit = LIMIT): Pagination => {
   const [limit, setLimit] = useState(initLimit)
   const [skip, setSkip] = useState(0) // offset
 
-  // Update the offset 
+  // Update the offset
   useEffect(() => {
     setSkip(page * limit)
   }, [page, limit])
