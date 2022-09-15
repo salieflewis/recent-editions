@@ -2,8 +2,7 @@ import request from "graphql-request";
 import { SubgraphERC721Drop } from "models/subgraph";
 import { useMemo, useCallback } from 'react';
 import useSWRInfinite from 'swr/infinite';
-
-export const LIMIT = 24
+import { LIMIT } from "utils/constants";
 
 export type DropList = {
   erc721Drops: SubgraphERC721Drop[]
@@ -19,7 +18,8 @@ export function useInfiniteScroll<S>(query: string) {
   const getKey = (pageIndex: number, previousPageData: DropList) => {
     if (query === '') return null;
     if (previousPageData && !previousPageData?.erc721Drops.length) return null // reached the end
-    return [query, LIMIT, pageIndex * LIMIT, pageIndex]                  // SWR key
+    const offset = pageIndex * LIMIT
+    return [query, LIMIT, offset, pageIndex]                  // SWR key
   }
 
   const { data, size, error, setSize, isValidating } = useSWRInfinite<S>(getKey, dropsFetcher);

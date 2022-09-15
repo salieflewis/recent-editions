@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, SetStateAction, Dispatch } from 'react'
+import { LIMIT } from 'utils/constants'
 
 type Pagination = {
   page: number
@@ -9,8 +10,6 @@ type Pagination = {
   setLimit: Dispatch<SetStateAction<number>>
   handleLoadMore: () => void
 }
-
-export const LIMIT = 24
 
 const usePagination = (initLimit = LIMIT): Pagination => {
   const [page, setPage] = useState(0)

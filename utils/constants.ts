@@ -1,5 +1,9 @@
 import { EditionFilterTypes } from "./types"
 
+// FETCH LIMIT
+export const LIMIT = 24
+
+
 // Sort options
 export const LATEST = 'Latest'
 export const OLDEST = 'Earliest'
