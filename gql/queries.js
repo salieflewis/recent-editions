@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
 export const GET_NEW_DROPS = gql`
-  query ERC721Drops($first: Int, $skip: Int) {
+  query AllERC721Drops($first: Int, $skip: Int) {
     erc721Drops(
       orderBy: createdAt
       orderDirection: desc
@@ -23,12 +23,12 @@ export const GET_NEW_DROPS = gql`
 `;
 
 export const GET_FREE_DROPS = gql`
-query FreeERC721Drops($first: Int, $skip: Int, $orderDirection: String) {
+query FreeERC721Drops($limit: Int, $offset: Int, $orderDirection: String) {
   erc721Drops(
     orderBy: createdAt
     orderDirection: desc
-    first: $first
-    skip: $skip
+    first: $limit
+    skip: $offset
     where: {salesConfig_: {publicSalePrice: "0"}}
   ) {
     name
