@@ -2,6 +2,7 @@
 import { InView } from 'react-intersection-observer';
 
 // Components
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { NFTCard } from '../components/NFTCard';
 import { Flex, Box, SpinnerOG, Grid } from '@zoralabs/zord';
 
@@ -70,42 +71,55 @@ const FreeDrops = ({ filter, sorting }) => {
           fullWidthSpinner
         ) :
           (
-            <Box className={feedWrapper}>
-              <Grid
-                wrap='wrap'
-                px='x16'
-                gap='x6'
-                columns="repeat(auto-fill, minmax(240px, 1fr))"
-              >
-                {
-                  drops?.map(({ name, address, owner, symbol, editionMetadata, salesConfig }) => {
-                    if (editionMetadata != null)
-                      return (
-                        <Box
-                          key={`${editionMetadata.imageURI}-${name}`}
-                        >
-                          <NFTCard
-                            editionMetadata={editionMetadata}
-                            symbol={symbol}
-                            name={name}
-                            address={address}
-                            publicSalePrice={
-                              salesConfig.publicSalePrice
-                            }
-                          />
-                        </Box>
-                      );
-                  })
-                }
-                <InView
-                  onChange={(inView) => {
-                    if (inView) {
-                      handleLoadMore()
-                    }
-                  }}
-                />
-              </Grid>
-            </Box>
+            <InfiniteScroll dataLength={drops.length}
+              next={handleLoadMore}
+              hasMore={true}
+              loader={fullWidthSpinner}
+              endMessage={
+                <p style={{ textAlign: 'center' }}>
+                  <b>Yay! You have seen it all</b>
+                </p>}
+              refreshFunction={() => setPage(0)}
+              pullDownToRefresh
+              pullDownToRefreshThreshold={50}
+            >
+              <Box className={feedWrapper}>
+                <Grid
+                  wrap='wrap'
+                  px='x16'
+                  gap='x6'
+                  columns="repeat(auto-fill, minmax(240px, 1fr))"
+                >
+                  {
+                    drops?.map(({ name, address, owner, symbol, editionMetadata, salesConfig }) => {
+                      if (editionMetadata != null)
+                        return (
+                          <Box
+                            key={`${editionMetadata.imageURI}-${name}`}
+                          >
+                            <NFTCard
+                              editionMetadata={editionMetadata}
+                              symbol={symbol}
+                              name={name}
+                              address={address}
+                              publicSalePrice={
+                                salesConfig.publicSalePrice
+                              }
+                            />
+                          </Box>
+                        );
+                    })
+                  }
+                  {/* <InView
+                      onChange={(inView) => {
+                        if (inView) {
+                          handleLoadMore()
+                        }
+                      }}
+                    /> */}
+                </Grid>
+              </Box>
+            </InfiniteScroll>
           )
       }
     </>
