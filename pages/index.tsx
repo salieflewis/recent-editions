@@ -40,7 +40,6 @@ const Home: NextPage = () => {
             borderRadius='phat'
             size="sm"
             icon="ChevronDown"
-            offsetY={40}
             onClick={() => setOpen(true)}
             className={['sort-dropdown', filters]}
 
