@@ -18,8 +18,7 @@ export function useInfiniteScroll<S>(query: string) {
   const getKey = (pageIndex: number, previousPageData: DropList) => {
     if (query === '') return null;
     if (previousPageData && !previousPageData?.erc721Drops.length) return null // reached the end
-    const offset = pageIndex * LIMIT
-    return [query, LIMIT, offset, pageIndex]                  // SWR key
+    return [query, LIMIT, pageIndex * LIMIT, pageIndex]                  // SWR key
   }
 
   const { data, size, error, setSize, isValidating } = useSWRInfinite<S>(getKey, dropsFetcher);

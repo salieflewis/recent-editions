@@ -1,12 +1,12 @@
 import { gql } from 'graphql-request';
 
 export const GET_NEW_DROPS = gql`
-  query AllERC721Drops($first: Int, $skip: Int) {
+  query AllERC721Drops($limit: Int, $offset: Int) {
     erc721Drops(
       orderBy: createdAt
       orderDirection: desc
-      first: $first
-      skip: $skip
+      first: $limit
+      skip: $offset
     ) {
       name
       address
