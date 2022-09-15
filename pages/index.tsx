@@ -1,14 +1,13 @@
 import type { NextPage } from 'next';
-import { AllDrops } from '../components/AllDrops';
 import Layout from 'components/Layout';
 import React, { useCallback, useRef } from 'react'
 import { useState } from 'react';
 import { Box, Button, Flex, Icon, PopUp, Stack, Text } from '@zoralabs/zord';
 import FreeDrops from '../components/FreeDrops';
 import { filters } from 'styles/styles.css';
-// import { useKeyPress } from '@shared';
 import { DEFAULT_FILTER_OPTIONS } from '../utils/constants';
 import { filterWrapper } from '../styles/styles.css';
+import AllDrops from 'components/AllDrops';
 
 export enum EditionFilterTypes {
   ALL = 'ALL',

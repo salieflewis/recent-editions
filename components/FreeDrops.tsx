@@ -1,97 +1,41 @@
-// import { useInView } from 'react-intersection-observer'
-import { InView } from 'react-intersection-observer';
 
 // Components
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { NFTCard } from '../components/NFTCard';
-import { Flex, Box, SpinnerOG, Grid } from '@zoralabs/zord';
+import { InView } from 'react-intersection-observer';
+import { Box, Grid } from '@zoralabs/zord';
 
 // Query
-import useSWR from 'swr'
-import request from 'graphql-request';
 import { GET_FREE_DROPS } from '../gql/queries'
-// Fetcher
-const dropsFetcher = (query, first, skip) => request('https://api.thegraph.com/subgraphs/name/iainnash/zora-editions-mainnet', query, { first, skip })
 
 // Utils
 // import { getOrderBy } from 'utils/subgraph';
 
 // Hooks
-import { useState, useEffect, useMemo } from 'react'
-import usePagination from 'hooks/usePagination'
 import { feedWrapper } from 'styles/styles.css';
+import { DropList, useInfiniteScroll } from '../hooks/useInfiniteScroll';
+import FullWidthSpinner from './FullWidthSpinner';
 
 const FreeDrops = ({ filter, sorting }) => {
-  const [drops, setDrops] = useState([])
-  // const { ref, inView } = useInView()
 
-  // GQL Pagination
-  const { page, limit, setPage, skip, handleLoadMore } = usePagination()
-
-  // Get drops data
-  const first = limit // store limit as `first` for the subgraph
-  const { data: dropsData, error: fetchDropsError } = useSWR(
-    [GET_FREE_DROPS, first, skip],
-    dropsFetcher
-  )
-
-  // Set state
-  useEffect(() => {
-    let _drops = dropsData?.erc721Drops ?? []
-
-    let returnedDrops = []
-
-    // filter out duplicates or repeating items due to mutable nature of list
-    returnedDrops = _drops.filter((d) => !drops.includes(d))
-
-    if (page === 0) setDrops(returnedDrops)
-    else setDrops([...drops, ...returnedDrops])
-  }, [dropsData, page])
-
-  // useEffect(() => {
-  //   if (inView) {
-  //     loadMore()
-  //   }
-  // }, [inView])
-
-  // Reset page on new filter or sorting
-  useEffect(() => {
-    setPage(0)
-  }, [filter, sorting])
-
-  const fullWidthSpinner = (
-    <Box width='100%' mt='x5' style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
-      <SpinnerOG />
-    </Box>
-  )
+  const { data, error, handleLoadMore } = useInfiniteScroll<DropList>(GET_FREE_DROPS)
   return (
     <>
       {
-        !drops.length ? (
-          fullWidthSpinner
+        !data ? (
+          <FullWidthSpinner />
         ) :
           (
-            <InfiniteScroll dataLength={drops.length}
-              next={handleLoadMore}
-              hasMore={true}
-              loader={fullWidthSpinner}
-              endMessage={
-                <p style={{ textAlign: 'center' }}>
-                  <b>Yay! You have seen it all</b>
-                </p>}
-              refreshFunction={() => setPage(0)}
-              pullDownToRefresh
-              pullDownToRefreshThreshold={50}
-            >
-              <Box className={feedWrapper}>
-                <Grid
-                  wrap='wrap'
-                  px='x16'
-                  gap='x6'
-                  columns="repeat(auto-fill, minmax(240px, 1fr))"
-                >
-                  {
-                    drops?.map(({ name, address, owner, symbol, editionMetadata, salesConfig }) => {
+            <Box className={feedWrapper}>
+              <Grid
+                wrap='wrap'
+                px='x16'
+                gap='x6'
+                columns="repeat(auto-fill, minmax(240px, 1fr))"
+              >
+                {
+                  data.map((page) => {
+                    //  data is an array of each page's api response
+                    return page.erc721Drops.map(({ name, address, owner, symbol, editionMetadata, salesConfig }) => {
                       if (editionMetadata != null)
                         return (
                           <Box
@@ -109,17 +53,15 @@ const FreeDrops = ({ filter, sorting }) => {
                           </Box>
                         );
                     })
-                  }
-                  {/* <InView
-                      onChange={(inView) => {
-                        if (inView) {
-                          handleLoadMore()
-                        }
-                      }}
-                    /> */}
-                </Grid>
-              </Box>
-            </InfiniteScroll>
+                  })
+                }
+                <InView
+                  onChange={(inView) => {
+                    if (inView) handleLoadMore()
+                  }}
+                />
+              </Grid>
+            </Box>
           )
       }
     </>
