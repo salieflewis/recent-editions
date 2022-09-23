@@ -1,5 +1,6 @@
 import { Flex, Eyebrow } from '@zoralabs/zord';
 import { CustomConnect } from './CustomConnect';
+import { PopUpFilter } from './PopUpFilter';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -15,6 +16,7 @@ export function Header() {
 
   return (
     <Flex className={headingWrapper}>
+      <Flex align='center' gap='x4'>
       <Eyebrow mx='x8'>
         Recent Editions from{' '}
         <a
@@ -26,18 +28,10 @@ export function Header() {
           create.zora.co
         </a>
       </Eyebrow>
+      <PopUpFilter />
+      </Flex>
 
-      <Flex gap='x12' mx='x8' align='center'>
-        <Link href='/feed/latest'>
-          <Eyebrow>
-            <a className={router.asPath == '/feed/latest' ? activeLinkWrapper : linkWrapper}>Latest</a>
-          </Eyebrow>
-        </Link>
-        <Link href='/feed/free'>
-          <Eyebrow>
-            <a className={router.asPath == '/feed/free' ? activeLinkWrapper : linkWrapper}>Free</a>
-          </Eyebrow>
-        </Link>
+      <Flex gap='x32' mx='x8' align='center'>
         <CustomConnect title={'Connect Wallet'} />
       </Flex>
     </Flex>
