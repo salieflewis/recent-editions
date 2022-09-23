@@ -15,13 +15,8 @@ globalStyle('html, body', {
 
 export const activeLinkWrapper = style([
   {
-    color: 'black',
+    color: '#D9D9D9',
   },
-  // {
-  //   selectors: {
-  //     '&:hover': {},
-  //   },
-  // },
 ]);
 
 export const imageWrapper = style([
