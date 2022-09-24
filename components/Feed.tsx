@@ -11,35 +11,20 @@ export const Feed = ({ query }) => {
   return (
     <>
       <Flex wrap='wrap' mx='x16'>
-        {data.erc721Drops.map(
-          ({
-            name,
-            address,
-            owner,
-            symbol,
-            editionMetadata,
-            salesConfig,
-          }) => {
-            if (editionMetadata != null)
-              return (
-                <Box
-                  key={`${address}`}
-                  mx='auto'
-                  mt='x24'
-                >
-                  <NFTCard
-                    editionMetadata={editionMetadata}
-                    symbol={symbol}
-                    name={name}
-                    address={address}
-                    publicSalePrice={
-                      salesConfig.publicSalePrice
-                    }
-                  />
-                </Box>
-              );
-          }
-        )}
+        {data.erc721Drops.map(({ name, address, owner, symbol, editionMetadata, salesConfig }) => {
+          if (editionMetadata != null)
+            return (
+              <Box key={`${address}`} mx='auto' mt='x24'>
+                <NFTCard
+                  editionMetadata={editionMetadata}
+                  symbol={symbol}
+                  name={name}
+                  address={address}
+                  publicSalePrice={salesConfig.publicSalePrice}
+                />
+              </Box>
+            );
+        })}
       </Flex>
     </>
   );

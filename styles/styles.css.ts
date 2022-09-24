@@ -1,12 +1,5 @@
 import { style, globalStyle } from '@vanilla-extract/css';
-import {
-  atoms,
-  media,
-  typography,
-  colorTheme,
-  radii,
-  fontWeight,
-} from '@zoralabs/zord';
+import { atoms, media, typography, colorTheme, radii, fontWeight } from '@zoralabs/zord';
 
 globalStyle('html, body', {
   margin: 0,
@@ -19,20 +12,23 @@ export const activeLinkWrapper = style([
   },
 ]);
 
+export const nullImageWrapper = style([
+  {
+    borderBottom: '2px solid #F0F0F0',
+  },
+  atoms({
+    size: ['x64', 'x64'],
+  }),
+]);
+
 export const imageWrapper = style([
   {
+    aspectRatio: '1/1',
     objectFit: 'cover',
     borderRadius: '8px 8px 0 0',
     borderBottom: '2px solid #F0F0F0',
   },
-  // {
-  //   ':hover': {
-  //     transition: '0.4s ease',
-  //     opacity: '0.8',
-  //   },
-  // },
   atoms({
-    // borderRadius: 'curved',
     size: ['x64', 'x64'],
   }),
 ]);
