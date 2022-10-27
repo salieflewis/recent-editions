@@ -1,5 +1,5 @@
 import { style, globalStyle } from '@vanilla-extract/css';
-import { atoms, media, typography, colorTheme, radii, fontWeight } from '@zoralabs/zord';
+import { atoms } from '@zoralabs/zord';
 
 globalStyle('html, body', {
   margin: 0,
