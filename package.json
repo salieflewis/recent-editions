@@ -11,7 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@vanilla-extract/next-plugin": "^2.0.2",
-    "@zoralabs/zord": "^0.1.1",
+    "@zoralabs/zord": "^2.0.0",
     "connectkit": "^0.0.2",
     "ethers": "^5.7.0",
     "got": "^12.5.0",
