@@ -8,23 +8,23 @@ import {
   Flex,
   Icon,
 } from '@zoralabs/zord';
-
 import { ConnectKitButton } from 'connectkit';
-
 import { mintButton, linkWrapper } from 'styles/styles.css';
-
 import { useContractWrite, useAccount } from 'wagmi';
-
 import { ethers } from 'ethers';
-
 import ERC721Drop from '../abi/ERC721Drop.json';
 
-export const Collect = ({ address, symbol, publicSalePrice }) => {
+type CollectProps = {
+  address: string;
+  symbol: string;
+  publicSalePrice: number;
+};
+
+export const Collect = ({ address, symbol, publicSalePrice }: CollectProps) => {
   const pricePerMint = publicSalePrice.toString();
 
   const pricePerMintinETH = ethers.utils
     .formatUnits(publicSalePrice)
-    .toString();
 
   const { write, error } = useContractWrite({
     mode: 'recklesslyUnprepared',
@@ -33,7 +33,7 @@ export const Collect = ({ address, symbol, publicSalePrice }) => {
     functionName: 'purchase',
     args: ['1'],
     overrides: {
-      value: pricePerMint,
+      value: pricePerMintinETH,
     },
     onError(error) {
       console.log('price:', pricePerMint);
