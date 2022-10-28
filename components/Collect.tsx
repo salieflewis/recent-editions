@@ -11,7 +11,7 @@ import {
 
 import { ConnectKitButton } from 'connectkit';
 
-import { collectButton, linkWrapper } from 'styles/styles.css';
+import { mintButton, linkWrapper } from 'styles/styles.css';
 
 import { useContractWrite, useAccount } from 'wagmi';
 
@@ -51,12 +51,12 @@ export const Collect = ({ address, symbol, publicSalePrice }) => {
   return (
     <Modal
       trigger={
-        <Box my='x4' className={collectButton}>
-          <Eyebrow>Collect</Eyebrow>
+        <Box my='x4' className={mintButton}>
+          <Eyebrow>Mint</Eyebrow>
         </Box>
       }
     >
-      <ModalContent title='Collect modal'>
+      <ModalContent title='Mint modal'>
         {isDisconnected ? (
           <Flex mt='x8' mb='x4' justify='center' mx='auto'>
             <ConnectKitButton />
@@ -91,7 +91,7 @@ export const Collect = ({ address, symbol, publicSalePrice }) => {
               variant='secondary'
               mt='x8'
             >
-              <Eyebrow>Collect Edition</Eyebrow>
+              <Eyebrow>Mint Edition</Eyebrow>
             </Button>
           </Box>
         )}

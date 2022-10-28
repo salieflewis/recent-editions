@@ -65,7 +65,7 @@ export const connectButtonStyle = style([
   }),
 ]);
 
-export const collectButton = style([
+export const mintButton = style([
   {
     borderRadius: '8px 8px',
     border: '2px solid #F0F0F0',
