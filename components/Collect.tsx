@@ -4,35 +4,22 @@ import {
   Eyebrow,
   Modal,
   ModalContent,
-  Paragraph,
   Heading,
   Flex,
-  Tag,
-  Label,
   Icon,
 } from '@zoralabs/zord';
 
-import { CustomConnect } from './CustomConnect';
+import { ConnectKitButton } from 'connectkit';
 
-import {
-  collectButton,
-  connectButtonStyle,
-  linkWrapper,
-} from 'styles/styles.css';
+import { collectButton, linkWrapper } from 'styles/styles.css';
 
 import { useContractWrite, useAccount } from 'wagmi';
 
-import { ethers, BigNumber } from 'ethers';
+import { ethers } from 'ethers';
 
 import ERC721Drop from '../abi/ERC721Drop.json';
 
-import { useConnectedBalance } from 'hooks/useConnectedBalance';
-
-export const Collect = ({
-  address,
-  symbol,
-  publicSalePrice,
-}) => {
+export const Collect = ({ address, symbol, publicSalePrice }) => {
   const pricePerMint = publicSalePrice.toString();
 
   const pricePerMintinETH = ethers.utils
@@ -52,8 +39,8 @@ export const Collect = ({
       console.log('price:', pricePerMint);
       return (
         <Eyebrow>
-          Please make sure you have enough ETH in your
-          wallet to complete this transaction
+          Please make sure you have enough ETH in your wallet to complete this
+          transaction
         </Eyebrow>
       );
     },
@@ -72,9 +59,7 @@ export const Collect = ({
       <ModalContent title='Collect modal'>
         {isDisconnected ? (
           <Flex mt='x8' mb='x4' justify='center' mx='auto'>
-            <CustomConnect
-              title={'Go ahead and connect your wallet'}
-            />
+            <ConnectKitButton />
           </Flex>
         ) : (
           <Box>
@@ -88,10 +73,7 @@ export const Collect = ({
               <Button mt='x6' variant='unset'>
                 <Flex align='center'>
                   <a
-                    href={
-                      'https://create.zora.co/editions/' +
-                      address
-                    }
+                    href={'https://create.zora.co/editions/' + address}
                     target='_blank'
                     rel='noreferrer'
                   >
@@ -99,11 +81,7 @@ export const Collect = ({
                       View on create.zora.co
                     </Eyebrow>
                   </a>
-                  <Icon
-                    size='sm'
-                    id='ArrowRightAngle'
-                    pl='x2'
-                  />
+                  <Icon size='sm' id='ArrowRightAngle' pl='x2' />
                 </Flex>
               </Button>
             </Flex>

@@ -27,7 +27,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={client}>
       <ApolloProvider client={apolloClient}>
-        <ConnectKitProvider>
+        <ConnectKitProvider theme='soft'>
           <ThemeProvider theme={lightTheme}>
             <Component {...pageProps} />
           </ThemeProvider>
