@@ -1,4 +1,4 @@
-import { Flex, Eyebrow } from '@zoralabs/zord';
+import { Flex, Eyebrow, Heading } from '@zoralabs/zord';
 import { PopUpFilter } from './PopUpFilter';
 import { ConnectKitButton } from 'connectkit';
 import { useRouter } from 'next/router';
@@ -9,22 +9,11 @@ export function Header() {
 
   return (
     <Flex className={headingWrapper}>
-      <Flex align='center' gap='x4'>
-        <Eyebrow mx='x8'>
-          Recent Editions from{' '}
-          <a
-            href='http://create.zora.co/'
-            target='_blank'
-            rel='noreferrer'
-            className={linkWrapper}
-          >
-            create.zora.co
-          </a>
-        </Eyebrow>
+      <Flex mx='x8' align='center'>
         <PopUpFilter />
       </Flex>
 
-      <Flex gap='x32' mx='x8' align='center'>
+      <Flex mx='x8' align='center'>
         <ConnectKitButton />
       </Flex>
     </Flex>
