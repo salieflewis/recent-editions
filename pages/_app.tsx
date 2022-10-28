@@ -25,7 +25,7 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const alchemyId = process.env.NEXT_ALCHEMY_KEY;
+const alchemyId = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 
 const client = createClient(
   getDefaultClient({
