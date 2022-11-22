@@ -10,41 +10,30 @@ import {
 } from '@zoralabs/zord';
 import { ConnectKitButton } from 'connectkit';
 import { mintButton, linkWrapper } from 'styles/styles.css';
-import { useContractWrite, useAccount } from 'wagmi';
+import { usePrepareContractWrite, useContractWrite, useAccount } from 'wagmi';
 import { ethers } from 'ethers';
-import ERC721Drop from '../abi/ERC721Drop.json';
+import ERC721Drop from '../abi/ERC721Drop';
 
 type CollectProps = {
-  address: string;
+  address?: string;
   symbol: string;
   publicSalePrice: number;
 };
 
 export const Collect = ({ address, symbol, publicSalePrice }: CollectProps) => {
-  const pricePerMint = publicSalePrice.toString();
+  const pricePerMintinETH = Number(ethers.utils.formatUnits(publicSalePrice));
 
-  const pricePerMintinETH = ethers.utils
-    .formatUnits(publicSalePrice)
-
-  const { write, error } = useContractWrite({
-    mode: 'recklesslyUnprepared',
-    addressOrName: address,
-    contractInterface: ERC721Drop,
+  const { config, error } = usePrepareContractWrite({
+    address: address,
+    abi: ERC721Drop,
     functionName: 'purchase',
     args: ['1'],
     overrides: {
       value: pricePerMintinETH,
     },
-    onError(error) {
-      console.log('price:', pricePerMint);
-      return (
-        <Eyebrow>
-          Please make sure you have enough ETH in your wallet to complete this
-          transaction
-        </Eyebrow>
-      );
-    },
   });
+
+  const { write } = useContractWrite(config);
 
   const { isDisconnected } = useAccount();
 
