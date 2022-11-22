@@ -1,4 +1,4 @@
-[
+export const ERC721Drop = [
   {
     "inputs": [
       {
@@ -1538,4 +1538,4 @@
     "type": "function"
   },
   { "stateMutability": "payable", "type": "receive" }
-]
+] as const;

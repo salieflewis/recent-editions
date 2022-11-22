@@ -12,7 +12,7 @@ import { ConnectKitButton } from 'connectkit';
 import { mintButton, linkWrapper } from 'styles/styles.css';
 import { useContractWrite, useAccount } from 'wagmi';
 import { ethers } from 'ethers';
-import ERC721Drop from '../abi/ERC721Drop.json';
+import ERC721Drop from '../abi/ERC721Drop';
 
 type CollectProps = {
   address: string;
