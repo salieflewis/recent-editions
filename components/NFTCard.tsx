@@ -1,9 +1,29 @@
-import { Box, Button, Flex, Eyebrow, Label, Tag } from '@zoralabs/zord';
+import { Box, Flex, Label, Tag } from '@zoralabs/zord';
 import { IpfsImage } from 'react-ipfs-image';
-import { cardWrapper, imageWrapper, cardTitle, nullImageWrapper } from 'styles/styles.css';
+import {
+  cardWrapper,
+  imageWrapper,
+  cardTitle,
+  nullImageWrapper,
+} from 'styles/styles.css';
 import { Collect } from './Collect';
 
-export const NFTCard = ({ editionMetadata, symbol, name, address, publicSalePrice }) => {
+export type DropProps = {
+  editionMetadata: any;
+  symbol: string;
+  name: string;
+  address: string;
+  publicSalePrice: number;
+  salesConfig?: any;
+};
+
+export const NFTCard = ({
+  editionMetadata,
+  symbol,
+  name,
+  address,
+  publicSalePrice,
+}: DropProps) => {
   return (
     <Box className={cardWrapper}>
       <Box>
@@ -24,7 +44,11 @@ export const NFTCard = ({ editionMetadata, symbol, name, address, publicSalePric
             <Tag active={true}>${symbol}</Tag>
           </Flex>
 
-          <Collect address={address} publicSalePrice={publicSalePrice} symbol={symbol} />
+          <Collect
+            address={address}
+            publicSalePrice={publicSalePrice}
+            symbol={symbol}
+          />
         </Box>
       </Box>
     </Box>
