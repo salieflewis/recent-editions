@@ -20,13 +20,17 @@ type CollectProps = {
   publicSalePrice: number;
 };
 
-export const Collect = ({ address, symbol, publicSalePrice }: CollectProps) => {
+export const Collect = ({
+  address: dropContract,
+  symbol,
+  publicSalePrice,
+}: CollectProps) => {
   const pricePerMintinETH = ethers.utils.formatUnits(publicSalePrice);
   const totalPurchasePrice = BigNumber.from(publicSalePrice);
   const mintQuantity = BigNumber.from('1');
 
   const { config, error } = usePrepareContractWrite({
-    address: address,
+    address: dropContract,
     abi: ERC721Drop,
     functionName: 'purchase',
     args: [mintQuantity],
