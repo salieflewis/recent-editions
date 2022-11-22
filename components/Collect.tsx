@@ -15,7 +15,7 @@ import { BigNumber, ethers } from 'ethers';
 import { ERC721Drop } from '../abi/ERC721Drop';
 
 type CollectProps = {
-  address?: string;
+  address: string;
   symbol: string;
   publicSalePrice: number;
 };
@@ -26,8 +26,8 @@ export const Collect = ({ address, symbol, publicSalePrice }: CollectProps) => {
   const mintQuantity = BigNumber.from('1');
 
   const { config, error } = usePrepareContractWrite({
-    address: address,
-    abi: ERC721Drop,
+    addressOrName: address,
+    contractInterface: ERC721Drop,
     functionName: 'purchase',
     args: [mintQuantity],
     overrides: {
