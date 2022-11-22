@@ -12,7 +12,7 @@
     "@apollo/client": "^3.6.9",
     "@vanilla-extract/next-plugin": "^2.0.2",
     "@zoralabs/zord": "^2.0.0",
-    "connectkit": "^0.0.2",
+    "connectkit": "^1.0.0",
     "ethers": "^5.7.0",
     "got": "^12.5.0",
     "graphql": "^16.6.0",
@@ -23,7 +23,7 @@
     "react-dom": "18.2.0",
     "react-ipfs-image": "^0.6.0",
     "react-is": "^18.2.0",
-    "wagmi": "^0.6.4"
+    "wagmi": "^0.8.6"
   },
   "devDependencies": {
     "@types/node": "18.7.13",
