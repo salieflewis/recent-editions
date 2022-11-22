@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Eyebrow, Label, Tag } from '@zoralabs/zord';
+import { Box, Flex, Label, Tag } from '@zoralabs/zord';
 import { IpfsImage } from 'react-ipfs-image';
 import { cardWrapper, imageWrapper, cardTitle, nullImageWrapper } from 'styles/styles.css';
 import { Collect } from './Collect';
