@@ -8,12 +8,13 @@ import {
 } from 'styles/styles.css';
 import { Collect } from './Collect';
 
-type NFTCardProps = {
+export type DropProps = {
   editionMetadata: any;
   symbol: string;
   name: string;
   address: string;
   publicSalePrice: number;
+  salesConfig?: any;
 };
 
 export const NFTCard = ({
@@ -22,7 +23,7 @@ export const NFTCard = ({
   name,
   address,
   publicSalePrice,
-}: NFTCardProps) => {
+}: DropProps) => {
   return (
     <Box className={cardWrapper}>
       <Box>
