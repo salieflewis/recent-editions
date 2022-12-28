@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@public-assembly/zora-drops-utils": "^0.1.62",
     "@vanilla-extract/next-plugin": "^2.0.2",
     "@zoralabs/zord": "^2.0.0",
     "connectkit": "^0.0.2",
     "ethers": "^5.7.0",
     "got": "^12.5.0",
     "graphql": "^16.6.0",
+    "graphql-request": "^5.1.0",
     "needle": "^3.1.0",
     "next": "12.2.5",
     "oauth-1.0a": "^2.2.6",
@@ -23,6 +25,7 @@
     "react-dom": "18.2.0",
     "react-ipfs-image": "^0.6.0",
     "react-is": "^18.2.0",
+    "swr": "^1.3.0",
     "wagmi": "^0.6.4"
   },
   "devDependencies": {
